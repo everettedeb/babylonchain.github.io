@@ -8,33 +8,37 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className='hero_container'>
-      <div className="title_container">
-        <h1 className="doc_title">{siteConfig.title}</h1>
-        <p className="doc_subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/introduction/overview">
-            📖 Go to our Documentation
-          </Link>
+      <div className={styles.heroContainer}>
+        <div className={styles.titleContainer}>
+          <h1 className={styles.docTitle}>{siteConfig.title}</h1>
+          <p className={styles.docSubtitle}>{siteConfig.tagline}</p>
+          <div className={styles.buttons}>
+            <Link
+              className={clsx('button button--secondary button--lg', styles.docButton)}
+              to="/docs/introduction/overview">
+              📖 Go to our Documentation
+            </Link>
+          </div>
         </div>
-      </div>
-      <img className='image' src={require('/static/img/banner-btc.png').default}></img>
+        <img
+          className={styles.image}
+          src={require('/static/img/banner-btc.png').default}
+          alt="Banner Image"
+        />
       </div>
     </header>
   );
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Welcome to Babylon Documentation`}
-      description="Description will go into a meta tag in <head />">
+      title={`Welcome to ${siteConfig.title} Documentation`}
+      description={siteConfig.tagline}>
       <HomepageHeader />
       <main>
         <HomepageFeatures />
